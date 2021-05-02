@@ -1,5 +1,5 @@
 ## ITS_Tester
-# Python module for testing HW in 'ITS' Python course
+## Python module for testing HW in 'ITS' Python course
 
 This module add 2 decorators:
 @encode_function
