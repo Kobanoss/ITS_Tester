@@ -2,8 +2,7 @@
 ## Python module for testing HW in 'ITS' Python course
 
 This module add 2 decorators:
-@encode_function
-@test
+@encode_function and @test
 
 # @encode_function
     Usage: Creating dict with pairs 
@@ -13,7 +12,7 @@ This module add 2 decorators:
     [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
     } etc.
     
-   # All data collecting to data_file.json
+## All data collecting to data_file.json
     
 # @test decorator     
 Usage: Testing fuctions using data in data_file.json
