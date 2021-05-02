@@ -18,3 +18,6 @@ This module add 2 decorators:
     Usage: Testing fuctions using data in data_file.json
 
     (Functions must have same name as fuctions in data_file!!!)
+
+Module use hash to ecncrypt answers, so, noone would know the fuction result.
+Only comparison result.
