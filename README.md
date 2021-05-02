@@ -17,4 +17,4 @@ This module add 2 decorators:
 # @test     
     Usage: Testing fuctions using data in data_file.json
 
-(Functions must have same name as fuctions in data_file!!!)
+    (Functions must have same name as fuctions in data_file!!!)
