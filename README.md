@@ -12,12 +12,14 @@ This module add 2 decorators:
     [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
     } etc.
     
-## All data collecting to data_file.json
-    
 # @test     
     Usage: Testing fuctions using data in data_file.json
 
     (Functions must have same name as fuctions in data_file!!!)
 
-Module use hash to ecncrypt answers, so, noone would know the fuction result.
+
+All data collecting to data_file.json
+
+Module use hash fuction to ecncrypt answers, so, noone would know the execution result.
+
 Only comparison result.
