@@ -6,12 +6,14 @@ This module add 2 decorators:
 @test
 
 
-    @encode_function decorator usage: Creating dict with pairs {'Fuction name #1': 
-                                                        [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
-                                                      'Fuction name #2': 
-                                                        [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
-                                                        } etc.
-    # All data collecting to data_file.json
+    @encode_function decorator usage: Creating dict with pairs 
+    {'Fuction name #1': 
+    [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
+    'Fuction name #2': 
+    [[Input args #1], [Hash Answer #1], [Input args #2], [Hash Answer #2]
+    } etc.
+    
+   # All data collecting to data_file.json
     
     
     @test decorator usage: Testing fuctions using data in data_file.json
