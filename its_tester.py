@@ -68,7 +68,7 @@ def test(func):
             print(f'\nTest #{run + 1}')
 
             input_list, predicted_hash, = _checker(func.__name__, run)
-            result = list(func(*args, **kwargs))
+            result = list(func(*input_list))
             result_hash = _get_hash(result)
 
             print('\n',
@@ -83,3 +83,4 @@ def test(func):
             print('#Success')
 
     return __wrapper
+
