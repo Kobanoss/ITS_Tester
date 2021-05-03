@@ -79,8 +79,11 @@ def test(func):
 
             if predicted_hash != result_hash:
                 print('#Test failed')
+                test_status = False
                 break
             print('#Success')
+            test_status = True
+        if test_status: print('\n### All test passed!')
 
     return __wrapper
 
