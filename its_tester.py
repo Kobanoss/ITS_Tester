@@ -2,9 +2,9 @@ import json
 import hashlib
 
 
-def _json_import():
+def _json_import(filename):
     try:
-        with open("data_file.json", "r") as file:
+        with open(filename, 'r') as file:
             data = json.load(file)
         return data
     except IOError:
@@ -14,8 +14,8 @@ def _json_import():
         return {}
 
 
-def _json_export(data):
-    with open("data_file.json", "w") as file:
+def _json_export(filename, data):
+    with open(filename, 'w') as file:
         json.dump(data, file)
 
 
@@ -25,12 +25,12 @@ def _get_hash(obj):
 
 def encode_function(func):
     def __wrapper(*args, **kwargs):
+        file = 'data_file.json'
         global testing_dict
-        testing_dict = _json_import()
-
-        result_hash = _get_hash(list(func(*args, **kwargs)))
-
-        if func.__name__ not in testing_dict:
+        testing_dict = _json_import(file)
+        func_result = func(*args, **kwargs)
+        result_hash = _get_hash(func_result if (type(func_result) == int or float or bool or str) else list(func_result))
+        if func.__name__ not in testing_dict.keys():
             value = [[*args, *kwargs], result_hash]
             testing_dict.update({func.__name__: [value]})
         else:
@@ -45,7 +45,7 @@ def encode_function(func):
             value.append([[*args, *kwargs], result_hash])
             testing_dict.update({func.__name__: value})
 
-        _json_export(testing_dict)
+        _json_export(file, testing_dict)
         print(f'#Test exported: "{func.__name__}" \n'
               '#With args:', *args, **kwargs)
 
@@ -58,8 +58,9 @@ def _checker(name, run):
 
 def test(func):
     def __wrapper(*args, **kwargs):
+        file = 'data_file.json'
         global testing_dict
-        testing_dict = _json_import()
+        testing_dict = _json_import(file)
 
         print('Testing...')
         print(f'Testing function: {func.__name__}()')
@@ -68,12 +69,13 @@ def test(func):
             print(f'\nTest #{run + 1}')
 
             input_list, predicted_hash, = _checker(func.__name__, run)
-            result = list(func(*input_list))
+            func_result = func(*input_list)
+            result = func_result if (type(func_result) == int or float or bool or str) else list(func_result)
             result_hash = _get_hash(result)
 
             print('\n',
                   'Input: ', *input_list, '\n',
-                  'Testing Function Result: ', *result, '\n',
+                  'Testing Function Result: ', result, '\n',
                   'Testing Function Hash: ', result_hash, '\n',
                   'Predicted Hash: ', predicted_hash, '\n')
 
@@ -83,7 +85,6 @@ def test(func):
                 break
             print('#Success')
             test_status = True
-        if test_status: print('\n### All test passed!')
+        if test_status: print('\n### All test passed!\n\n')
 
     return __wrapper
-
